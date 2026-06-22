@@ -20,7 +20,7 @@
     <link rel="icon" type="image/png" href="logo/logo.png" />
     <link rel="stylesheet" href="css/style.css" />
 
-    <script src="app.js" type="module"></script>
+    <script src="js/crud.js" type="module"></script>
 
     <title>Manage Menu | Valentina's Pastry</title>
   </head>
@@ -70,16 +70,20 @@
               type="text"
               id="pastry-name"
               placeholder="Enter the name of the pastry"
-              required
+              
             />
           </div>
 
           <div class="campo-form">
             <label for="pastry-image">Image of the pastry</label>
-            <select id="pastry-image" required>
+            <select id="pastry-image" >
               <option value="" disabled selected>
                 Select the image of the pastry
               </option>
+
+              <img src="" alt="">
+
+             
               <option value="imagenesPasteles/pastel1.png">Pastry 1</option>
               <option value="imagenesPasteles/pastel2.png">Pastry 2</option>
               <option value="imagenesPasteles/pastel3.png">Pastry 3</option>
@@ -95,7 +99,7 @@
               type="text"
               id="pastry-description"
               placeholder="Enter the description of the pastry"
-              required
+            
             />
           </div>
 
@@ -107,7 +111,7 @@
               placeholder="Enter the price of the pastry"
               min="0"
               step="0.01"
-              required
+            
             />
           </div>
 
