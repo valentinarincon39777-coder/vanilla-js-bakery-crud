@@ -208,6 +208,8 @@ main {
 
 #table img {
  
+    width: 130px;
+    height: auto;
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid var(--gold);
