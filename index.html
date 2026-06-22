@@ -1,20 +1,115 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style href="style.css"> </style>
-    <script href="app.js"></script>
-    <link rel="icon" type="image/png" href="logo/logo.png" />
-    <title>Pasteleria Raphaels's| Sistema de Gestión de Menú de Pastelería</title>
 
+    <!-- SEO -->
+    <meta
+        name="description"
+        content="Raphael's Pastry is a boutique patisserie offering handcrafted cakes, pastries, and artisan desserts inspired by traditional European baking.">
 
+    <meta
+        name="keywords"
+        content="pastry, bakery, artisan desserts, cakes, pastries, patisserie">
+
+    <meta
+        name="author"
+        content="Valentina Rincn">
+
+    <link rel="icon" type="image/png" href="logo/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="app.js" type="module"></script>
+
+    <title>Valentina's Pastry | Boutique Patisserie & Artisan Desserts</title>
 </head>
+
 <body>
-<img id='logo-pasteleria' src="logo/logo.png" alt="logo de la pasteleria">
+
+    <header class="hero">
+
+        <section class="brand">
 
 
+            <article>
 
-    
+                <h1>Valentina's Pastry</h1>
+                  
+
+                <p class="tagline">
+                    Boutique Patisserie & Artisan Desserts
+                </p>
+
+            </article>
+
+        </section>
+
+        <p class="hero-description">
+            Inspired by the timeless elegance of European pâtisseries,
+            Raphael's Pastry specializes in handcrafted cakes, delicate pastries,
+            and seasonal creations made with premium ingredients and a passion
+            for exceptional flavor.
+        </p>
+
+        <a href="crud.html" id="btn-manage-menu">
+            Manage Menu
+        </a>
+
+    </header>
+
+    <main>
+
+        <section aria-labelledby="menu-title">
+
+            <h2 id="menu-title">
+                Signature Collection
+            </h2>
+
+            <p class="menu-description">
+                Discover our curated selection of artisan pastries,
+                celebration cakes, and boutique dessert creations.
+            </p>
+
+            <section id="menu-container">
+                <!-- Web Components will be rendered here -->
+            </section>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <section>
+
+            <h2>Valentina's Pastry</h2>
+
+            <p>
+                Handcrafted pastries inspired by European traditions,
+                refined techniques, and timeless elegance.
+            </p>
+
+        </section>
+
+        <nav aria-label="Footer Navigation">
+
+            <h2>Quick Links</h2>
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="crud.html">Manage Menu</a></li>
+            </ul>
+
+        </nav>
+
+        <p class="copyright">
+            © 2026 Valentina's Pastry Boutique ·
+            Developed by Valentina Rincón ·
+            Vanilla JavaScript Practice Project
+        </p>
+
+    </footer>
+
 </body>
 </html>

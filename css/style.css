@@ -1,0 +1,752 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+/* ---------- Tokens ---------- */
+:root {
+  --cream: #f4ece1;
+  --paper: #fbf6ee;
+  --espresso: #3a2a1e;
+  --espresso-soft: #5c4737;
+  --terracotta: #b5654a;
+  --terracotta-deep: #9a5038;
+  --gold: #c9a24b;
+  --gold-soft: #e3d2a4;
+  --sage: #6e7350;
+  --rose-dust: #d9a79a;
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-display-sc: 'Cormorant SC', serif;
+  --font-body: 'EB Garamond', serif;
+
+  --rule: 1px solid var(--gold);
+  --radius: 2px;
+  --shadow-soft: 0 8px 24px -8px rgba(58, 42, 30, 0.25);
+}
+
+/* ---------- Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(201, 162, 75, 0.06),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 90%,
+      rgba(181, 101, 74, 0.06),
+      transparent 40%
+    );
+  color: var(--espresso);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+}
+
+/* ---------- Ornamental flourish (signature motif) ----------
+   Reused as: hero frame corners, section divider, card-hover mark */
+.flourish {
+  width: 64px;
+  height: 18px;
+  margin: 0 auto;
+  background: none;
+}
+
+.flourish::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 18'%3E%3Cpath d='M2 9 C16 9 16 2 32 2 C48 2 48 9 62 9' stroke='%23C9A24B' stroke-width='1.2' fill='none'/%3E%3Ccircle cx='32' cy='9' r='3' fill='%23B5654A'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  max-width: 720px;
+  margin: 64px auto 0;
+  padding: 56px 48px 48px;
+  text-align: center;
+  background-color: var(--paper);
+  border: var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Double-rule vintage frame, inset from the card edge */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(201, 162, 75, 0.45);
+  pointer-events: none;
+}
+
+/* Corner flourishes — the page's signature element, used sparingly */
+.hero::after {
+  content: '❦';
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--cream);
+  color: var(--terracotta);
+  font-size: 22px;
+  padding: 0 12px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+#pastry-logo {
+  width: 86px;
+  height: 86px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  padding: 4px;
+  background: var(--paper);
+}
+
+.brand h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 4vw, 2.9rem);
+  color: var(--espresso);
+  letter-spacing: 0.01em;
+}
+
+.tagline {
+  font-family: var(--font-display-sc);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terracotta-deep);
+}
+
+.hero-description {
+  max-width: 480px;
+  margin: 0 auto 30px;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--espresso-soft);
+}
+
+#btn-manage-menu {
+  display: inline-block;
+  padding: 12px 34px;
+  font-family: var(--font-display-sc);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background-color: var(--terracotta);
+  border: 1px solid var(--terracotta-deep);
+  border-radius: var(--radius);
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+#btn-manage-menu:hover {
+  background-color: var(--terracotta-deep);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   MAIN / MENU
+   ============================================================ */
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 72px 32px 96px;
+}
+
+main > section {
+  text-align: center;
+}
+
+#menu-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+  color: var(--espresso);
+  margin-bottom: 14px;
+}
+
+.menu-description {
+  max-width: 520px;
+  margin: 0 auto 18px;
+  color: var(--espresso-soft);
+  font-style: italic;
+}
+
+/* Divider between description and grid, built from the flourish */
+#menu-title + .menu-description + .flourish,
+.menu-description ~ .flourish {
+  margin-bottom: 40px;
+}
+
+#menu-container {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+  text-align: left;
+}
+
+/* Empty-state placeholder, shown while #menu-container has no children.
+   Remove or let it disappear naturally once web components populate it. */
+#menu-container:empty {
+  display: block;
+  text-align: center;
+  padding: 48px 24px;
+  border: 1px dashed var(--gold);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+#menu-container:empty::before {
+  content: 'El menú aún no tiene creaciones — añade tu primer pastel.';
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--espresso-soft);
+}
+
+/* Generic styling for whatever custom element tag fills the grid,
+   e.g. <pastry-card>. Only affects the host element's box, not its
+   Shadow DOM internals — expose parts or custom properties from the
+   component itself if you need to theme inside the shadow root. */
+#menu-container > * {
+  display: block;
+  background-color: var(--paper);
+  border: var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  /* Custom properties a web component can read via var(--card-*) */
+  --card-bg: var(--paper);
+  --card-text: var(--espresso);
+  --card-accent: var(--terracotta);
+  --card-border: var(--gold);
+  --card-font-display: var(--font-display);
+  --card-font-body: var(--font-body);
+}
+
+#menu-container > *:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px -10px rgba(58, 42, 30, 0.3);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background-color: var(--espresso);
+  color: var(--cream);
+  padding: 56px 32px 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 36px;
+  border-top: 4px double var(--gold);
+}
+
+footer h2 {
+  font-family: var(--font-display-sc);
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 14px;
+}
+
+footer p {
+  color: var(--cream);
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+footer nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+footer nav a {
+  font-size: 0.95rem;
+  color: var(--rose-dust);
+  transition: color 0.2s ease;
+}
+
+footer nav a:hover {
+  color: var(--gold);
+}
+
+.copyright {
+  grid-column: 1 / -1;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(201, 162, 75, 0.3);
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--gold-soft);
+  opacity: 0.75;
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+
+/* Visually hidden but still readable by screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   CRUD PAGE — action bar, table, modal, form
+   ============================================================ */
+
+/* ---------- Action bar (search + "New Pastry") ---------- */
+.bar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+#filter {
+  flex: 1 1 260px;
+  padding: 11px 18px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--espresso);
+  background-color: var(--paper);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+
+#filter::placeholder {
+  color: var(--espresso-soft);
+  opacity: 0.6;
+}
+
+#filter:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 2px;
+}
+
+#btn-new {
+  flex-shrink: 0;
+  padding: 11px 28px;
+  font-family: var(--font-display-sc);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background-color: var(--sage);
+  border: 1px solid var(--espresso-soft);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+#btn-new:hover {
+  background-color: var(--espresso-soft);
+  transform: translateY(-1px);
+}
+
+/* ---------- Table ---------- */
+#table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--paper);
+  border: var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+#table caption {
+  padding: 16px;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--espresso);
+  background-color: var(--gold-soft);
+  border-bottom: var(--rule);
+}
+
+#table thead th {
+  padding: 14px 18px;
+  font-family: var(--font-display-sc);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--paper);
+  background-color: var(--espresso);
+}
+
+#table thead th:last-child {
+  text-align: center;
+}
+
+#table tbody tr {
+  border-bottom: 1px solid rgba(201, 162, 75, 0.3);
+  transition: background-color 0.2s ease;
+}
+
+#table tbody tr:nth-child(even) {
+  background-color: rgba(201, 162, 75, 0.07);
+}
+
+#table tbody tr:hover {
+  background-color: rgba(181, 101, 74, 0.08);
+}
+
+#table tbody td {
+  padding: 14px 18px;
+  vertical-align: middle;
+  color: var(--espresso-soft);
+}
+
+#table tbody td:last-child {
+  text-align: center;
+}
+
+/* Thumbnail inside the "Image" column */
+#table tbody td img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+}
+
+/* Empty state — when #body-table has no rows yet, insert a row from JS:
+   <tr><td colspan="5" class="empty-row">No pastries yet — click "+ New Pastry" to add your first one.</td></tr> */
+.empty-row td {
+  text-align: center !important;
+  padding: 32px 18px !important;
+  font-style: italic;
+  color: var(--espresso-soft);
+}
+
+/* ---------- Row action buttons (edit / delete) ----------
+   Add these classes to the buttons you create in JS for each row,
+   e.g. <button class="btn-icon btn-edit">Edit</button> */
+.btn-icon {
+  padding: 6px 14px;
+  margin: 0 4px;
+  font-family: var(--font-display-sc);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn-edit {
+  color: var(--paper);
+  background-color: var(--sage);
+  border: 1px solid var(--espresso-soft);
+}
+
+.btn-edit:hover {
+  background-color: var(--espresso-soft);
+  transform: translateY(-1px);
+}
+
+.btn-delete {
+  color: var(--paper);
+  background-color: var(--terracotta);
+  border: 1px solid var(--terracotta-deep);
+}
+
+.btn-delete:hover {
+  background-color: var(--terracotta-deep);
+  transform: translateY(-1px);
+}
+
+/* ---------- Modal ---------- */
+
+/* Shown/hidden purely by toggling this class in JS */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-color: rgba(58, 42, 30, 0.55);
+  z-index: 100;
+}
+
+.hidden {
+  display: none;
+}
+
+
+#modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 40px 36px 32px;
+  background-color: var(--paper);
+  border: var(--rule);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 50px -12px rgba(58, 42, 30, 0.45);
+}
+
+#modal-content h2 {
+  margin-bottom: 24px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.6rem;
+  text-align: center;
+  color: var(--espresso);
+}
+
+#btn-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--espresso-soft);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+#btn-close:hover {
+  color: var(--terracotta);
+}
+
+/* ---------- Form fields inside the modal ---------- */
+#form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.campo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo-form label {
+  font-family: var(--font-display-sc);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--terracotta-deep);
+}
+
+.campo-form input,
+.campo-form select {
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--espresso);
+  background-color: var(--cream);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+}
+
+.campo-form input:focus-visible,
+.campo-form select:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 1px;
+}
+
+.campo-form input::placeholder {
+  color: var(--espresso-soft);
+  opacity: 0.55;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.modal-actions button {
+  padding: 10px 26px;
+  font-family: var(--font-display-sc);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+#btn-save {
+  color: var(--paper);
+  background-color: var(--terracotta);
+  border: 1px solid var(--terracotta-deep);
+}
+
+#btn-save:hover {
+  background-color: var(--terracotta-deep);
+  transform: translateY(-1px);
+}
+
+#btn-cancel {
+  color: var(--espresso);
+  background-color: transparent;
+  border: 1px solid var(--gold);
+}
+
+#btn-cancel:hover {
+  background-color: var(--gold-soft);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 600px) {
+  .hero {
+    margin: 32px 16px 0;
+    padding: 40px 24px 36px;
+  }
+
+  main {
+    padding: 56px 20px 72px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 48px 24px 24px;
+  }
+
+  footer nav ul {
+    align-items: center;
+  }
+
+  .bar-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #btn-new {
+    width: 100%;
+  }
+
+  #table thead {
+    display: none;
+  }
+
+  #table,
+  #table tbody,
+  #table tbody tr,
+  #table tbody td {
+    display: block;
+    width: 100%;
+  }
+
+  #table tbody tr {
+    padding: 14px 0;
+  }
+
+  #table tbody td {
+    padding: 6px 18px;
+    text-align: left !important;
+  }
+
+  #modal-content {
+    padding: 32px 22px 24px;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  #btn-manage-menu,
+  #menu-container > *,
+  #btn-new,
+  .btn-icon,
+  .modal-actions button {
+    transition: none;
+  }
+}
